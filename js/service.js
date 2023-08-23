@@ -35,3 +35,11 @@ var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 };
 function getImgs() {
   return gImgs;
 }
+
+function getMem(id) {
+  return {
+    selectedImgId: id,
+    selectedLineIdx: 0,
+    lines: [{ txt: "text", size: 20, color: "red" }],
+  };
+}
