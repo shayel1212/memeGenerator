@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">LOGO</div>
+      <div class="header-links">
+        <a href="#" class="gallery-link">Gallery</a>
+        <a href="#" class="about-link">About</a>
+      </div>
+    </header>
+    <main class="gallery">
+      <section class="gallery-inputs">
+        <input type="search" class="search-input" placeholder="Search meme.." />
+        <div class="images-links">
+          <button data-group="funny" class="group-btn">Funny</button>
+          <button data-group="animal" class="group-btn">Animal</button>
+          <button data-group="men" class="group-btn">Men</button>
+          <button data-group="women" class="group-btn">Women</button>
+          <button data-group="comic" class="group-btn">Comic</button>
+          <button data-group="smile" class="group-btn">Smile</button>
+        </div>
+
+        <button class="more-btn">More</button>
+      </section>
+
+      <section class="images"></section>
+    </main>
+    <main class="generator hidden">
+      <section class="canvas">
+        <canvas></canvas>
+      </section>
+      <section class="canvas-remote">
+        <div class="text">Lorem, ipsum dolor.</div>
+        <div class="text-btns">
+          <button class="location-btn">
+            <i class="fa-solid fa-arrows-up-down"></i>
+          </button>
+          <button class="add-btn">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <button class="remove-btn">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+        <div class="font-btns">
+          <button class="bigger-font">
+            <i class="fa-solid fa-a fa-xs"></i>
+          </button>
+          <button class="smaller-font">
+            <i class="fa-solid fa-a fa-xl"></i>
+          </button>
+          <button class="align-left">
+            <i class="fa-solid fa-align-left"></i>
+          </button>
+          <button class="align-center">
+            <i class="fa-solid fa-align-center"></i>
+          </button>
+          <button class="align-right">
+            <i class="fa-solid fa-align-right"></i>
+          </button>
+        </div>
+        <div class="share-btns">
+          <button class="share">
+            <i class="fa-solid fa-share-nodes"></i>
+            Share
+          </button>
+          <button class="download">
+            <i class="fa-solid fa-download"></i>
+            Download
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script
+      src="https://kit.fontawesome.com/7c1f7ac3f4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/service.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

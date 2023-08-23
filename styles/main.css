@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  background-color: #22252c;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #5970c1;
+  width: 95vw;
+  height: 7vh;
+  margin: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+.logo {
+  margin-inline-start: 3em;
+  cursor: pointer;
+}
+
+header .header-links {
+  margin-inline-end: 5em;
+}
+
+header a {
+  color: #fff;
+  margin-inline: 4em;
+  padding: 0.5em;
+  /* border: 2px white solid; */
+  border-radius: 15px;
+}
+header a:hover {
+  background-color: #fff;
+  color: #5970c1;
+}
+
+a {
+  text-decoration: none;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 95vw;
+
+  border-radius: 10px;
+  margin: auto;
+  background-color: #383b42;
+}
+
+.gallery-inputs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* background-color: aqua; */
+  height: 3rem;
+  margin-block: 2em;
+}
+
+.search-input {
+  flex-basis: 40%;
+  margin-inline-start: 2em;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: #22252c;
+}
+.search-input::placeholder {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.images-links {
+  padding: 0.5rem;
+  padding-inline: 2rem;
+  border-radius: 15px;
+  background-color: #22252c;
+}
+.images-links .group-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+.images-links .group-btn:hover {
+  color: grey;
+}
+.more-btn {
+  border: none;
+  margin-inline-end: 3em;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+  background-color: #5970c1;
+  color: #fff;
+}
+.more-btn:hover {
+  cursor: pointer;
+  color: #5970c1;
+  background-color: #fff;
+}
+.images {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 2em;
+
+  height: 70vh;
+  overflow-y: scroll;
+  padding-inline: 5em;
+}
+.images img {
+  width: 100%;
+  border-radius: 15px;
+}
+.images img:hover {
+  border: #5970c1 4px solid;
+  cursor: pointer;
+}
+
+.generator {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 70vh;
+  gap: 2em;
+
+  padding-inline: 5em;
+}
+.hidden {
+  display: none;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.canvas-remote {
+  background-color: #383b42;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.text {
+  width: 80%;
+  margin-top: 1em;
+  padding: 1em;
+  text-align: center;
+  border-radius: 25px;
+  background-color: #e7e1e1;
+  font-size: large;
+  margin-bottom: 1em;
+}
+.text-btns {
+  /* background-color: #fff; */
+  width: 50%;
+  height: 2em;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1em;
+}
+.location-btn {
+  background-color: rgb(27, 106, 243);
+  color: #fff;
+  border: none;
+  width: 3em;
+  border-radius: 5px;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.add-btn {
+  background-color: rgb(20, 252, 78);
+  color: #fff;
+  border: none;
+  width: 3em;
+  border-radius: 5px;
+  font-size: larger;
+  cursor: pointer;
+}
+.remove-btn {
+  background-color: rgb(252, 20, 20);
+  color: #fff;
+  border: none;
+  width: 3em;
+  border-radius: 5px;
+  font-size: larger;
+  cursor: pointer;
+}
+.font-btns {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: start; */
+  /* height: 10%; */
+  width: 80%;
+  padding: 2em;
+  background-color: #fff;
+  background-color: aqua;
+  border-radius: 20px;
+  margin-bottom: 1em;
+  /* padding: 2em; */
+}
+.font-btns button {
+  background-color: #fff;
+  border: none;
+  width: 3em;
+  height: 3em;
+  border-radius: 10px;
+  border-bottom: #383b42 2px solid;
+}
+.font-btns button:hover {
+  border-bottom: #383b42 4px solid;
+  cursor: pointer;
+}
+.share-btns {
+  /* background-color: #fff; */
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+.share-btns button {
+  width: 45%;
+  height: 3em;
+  border: none;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  border: 2px black solid;
+}
+.share {
+  background-color: rgb(8, 59, 141);
+}
+.download {
+  background-color: rgb(123, 6, 123);
+}
