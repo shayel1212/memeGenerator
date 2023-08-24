@@ -13,7 +13,14 @@
         <a href="#" class="gallery-link">Gallery</a>
         <a href="#" class="about-link">About</a>
       </div>
+      <button onclick="onHamburger()" class="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </header>
+    <div class="hidden burger-nav">
+      <a href="#" class="gallery-link">Gallery</a>
+      <a href="#" class="about-link">About</a>
+    </div>
     <main class="gallery">
       <section class="gallery-inputs">
         <input type="search" class="search-input" placeholder="Search meme.." />
@@ -26,14 +33,17 @@
           <button data-group="smile" class="group-btn">Smile</button>
         </div>
 
-        <button class="more-btn">More</button>
+        <div>
+          <button class="more-btn">More</button>
+          <button onclick="onFlexClick()" class="more-btn">Im Flexible</button>
+        </div>
       </section>
 
       <section class="images"></section>
     </main>
     <main class="generator hidden">
       <section class="canvas">
-        <canvas></canvas>
+        <canvas onclick="onCanvasClick(event)"></canvas>
       </section>
       <section class="canvas-remote">
         <input
@@ -43,10 +53,10 @@
           oninput="onTextInput(event)"
         />
         <div class="text-btns">
-          <button class="location-btn">
+          <button onclick="switchLine()" class="location-btn">
             <i class="fa-solid fa-arrows-up-down"></i>
           </button>
-          <button class="add-btn">
+          <button onclick="onAddLine()" class="add-btn">
             <i class="fa-solid fa-plus"></i>
           </button>
           <button class="remove-btn">
@@ -54,31 +64,56 @@
           </button>
         </div>
         <div class="font-btns">
-          <button class="bigger-font">
-            <i class="fa-solid fa-a fa-xs"></i>
-          </button>
-          <button class="smaller-font">
-            <i class="fa-solid fa-a fa-xl"></i>
-          </button>
-          <button class="align-left">
-            <i class="fa-solid fa-align-left"></i>
-          </button>
-          <button class="align-center">
-            <i class="fa-solid fa-align-center"></i>
-          </button>
-          <button class="align-right">
-            <i class="fa-solid fa-align-right"></i>
-          </button>
+          <div class="group1">
+            <button
+              onclick="onSmallerFont()"
+              title="decrease font"
+              class="smaller-font"
+            >
+              <i class="fa-solid fa-a fa-xs"></i>
+            </button>
+            <button
+              onclick="onBiggerFont()"
+              title="increase font"
+              class="bigger-font"
+            >
+              <i class="fa-solid fa-a fa-xl"></i>
+            </button>
+            <button onclick="onAlignLeft()" class="align-left">
+              <i class="fa-solid fa-align-left"></i>
+            </button>
+            <button onclick="onAlignCenter()" class="align-center">
+              <i class="fa-solid fa-align-center"></i>
+            </button>
+            <button onclick="onAlignRight()" class="align-right">
+              <i class="fa-solid fa-align-right"></i>
+            </button>
+          </div>
+          <input
+            title="choose color"
+            style="cursor: pointer"
+            onchange="onColorInput(event)"
+            type="color"
+            class="color-picker"
+          />
         </div>
         <div class="share-btns">
           <button class="share">
             <i class="fa-solid fa-share-nodes"></i>
             Share
           </button>
-          <button class="download">
+          <a
+            onclick="onDownload(this)"
+            class="download"
+            href="#"
+            download="my-img.jpg"
+          >
             <i class="fa-solid fa-download"></i>
             Download
-          </button>
+          </a>
+          <!-- <button class="download">
+            Download
+          </button> -->
         </div>
       </section>
     </main>

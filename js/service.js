@@ -19,6 +19,7 @@ var gImgs = [
   { id: 17, url: "imgs/17.jpg", keywords: ["men", "celebrity"] },
   { id: 18, url: "imgs/18.jpg", keywords: ["funny", "cartoon", "movie"] },
 ];
+var gAlignment = "center";
 var gMeme = {
   selectedImgId: 5,
   selectedLineIdx: 0,
@@ -36,10 +37,57 @@ function getImgs() {
   return gImgs;
 }
 
+function getLinePos(idx, x, y, width, height) {
+  gMeme.lines[idx].pos = {
+    x,
+    y,
+    width,
+    height,
+  };
+  console.log(gMeme);
+}
+
 function getMem(id) {
   return {
+    url: "",
     selectedImgId: id,
     selectedLineIdx: 0,
-    lines: [{ txt: "text", size: 20, color: "red" }],
+    lines: [{ txt: "", size: 20, color: "red", pos: { x: 30, y: 10 } }],
   };
+}
+
+function addLine() {
+  const newLine = {
+    txt: "",
+    size: 20,
+    color: "red",
+    pos: { x: 30, y: gElCanvas.height - 30 },
+  };
+  gMeme.lines.push(newLine);
+}
+function setAlignment(val) {
+  gAlignment = val;
+}
+
+function setLineText(ev) {
+  gMeme.lines[gMeme.selectedLineIdx].txt = ev.target.value;
+}
+function setImg(url) {
+  gMeme.url = url;
+}
+function setColor(color) {
+  gMeme.lines[gMeme.selectedLineIdx].color = color;
+}
+function decreaseFont() {
+  gMeme.lines[gMeme.selectedLineIdx].size--;
+}
+function increaseFont() {
+  gMeme.lines[gMeme.selectedLineIdx].size++;
+}
+function setSelectedLine() {
+  if (gMeme.lines.length === 1) return;
+  if (gMeme.selectedLineIdx === 0) {
+    gMeme.selectedLineIdx = 1;
+  } else gMeme.selectedLineIdx = 0;
+  console.log(gMeme.selectedLineIdx);
 }

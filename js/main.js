@@ -21,46 +21,131 @@ function renderGallery() {
 }
 
 function onImgClick(ev) {
-  const imgUrl = ev.target.currentSrc;
   const imgId = ev.target.dataset.id;
+  gMeme = getMem(imgId);
+  setImg(ev.target.currentSrc);
   document.querySelector(".gallery").classList.toggle("hidden");
   document.querySelector(".generator").classList.toggle("hidden");
-  gMeme = getMem(imgId);
-  console.log(gMeme);
-  renderMeme(ev);
+  renderMeme();
+}
+function drawRect(x, y) {
+  gCtx.strokeStyle = "black";
+  gCtx.strokeRect(x, y, 200, 15);
 }
 
-function drawText(text) {
-  var x = gElCanvas.width / 2;
-  var y;
-  if (gMeme.selectedLineIdx === 0) {
-    y = gElCanvas.height / 8;
-  }
-  gCtx.lineWidth = 1;
-  gCtx.strokeStyle = "black";
-  gCtx.fillStyle = "white";
-  gCtx.font = "20px Arial";
-  gCtx.textAlign = "center";
-  gCtx.textBaseline = "middle";
+function drawText() {
+  gMeme.lines.forEach((line) => {
+    gCtx.lineWidth = 1;
+    gCtx.strokeStyle = "black";
+    gCtx.fillStyle = `${line.color}`;
+    gCtx.font = `${line.size}px Impact`;
+    gCtx.textAlign = gAlignment;
+    gCtx.textBaseline = "middle";
 
-  gCtx.fillText(text, x, y);
-  gCtx.strokeText(text, x, y);
+    gCtx.fillText(line.txt, gElCanvas.width / 2, line.pos.y);
+    gCtx.strokeText(line.txt, gElCanvas.width / 2, line.pos.y);
+  });
+}
+
+function drawRects() {
+  gMeme.lines.forEach((line, idx) => {
+    if (idx === 0) {
+      if (line.txt) return;
+      drawRect(line.pos.x, line.pos.y);
+      //   getLinePos(idx, 30, gElCanvas.height / 15, 200, 15);
+    } else if (idx === 1) {
+      if (line.txt) return;
+      drawRect(line.pos.x, line.pos.y);
+      //   getLinePos(idx, 30, gElCanvas.height - 30, 200, 15);
+    }
+  });
 }
 
 function renderMeme() {
   const elImg = new Image();
-  const currImg = gImgs.find((img) => img.id === +gMeme.selectedImgId);
-  elImg.src = currImg.url;
-  // elImg.src = 'img/wide.jpg'
-  // elImg.src = 'img/tall.jpg'
+  elImg.src = gMeme.url;
   elImg.onload = () => {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
-    drawText(gMeme.lines[gMeme.selectedLineIdx].txt);
+    drawRects();
+    drawText();
   };
 }
 
 function onTextInput(ev) {
-  gMeme.lines[gMeme.selectedLineIdx].txt = ev.target.value;
-  gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+  setLineText(ev);
+  //   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
   renderMeme();
+}
+
+function onDownload(elLink) {
+  const imgContent = gElCanvas.toDataURL("image/jpeg"); // image/jpeg the default format
+  elLink.href = imgContent;
+}
+
+function onColorInput(ev) {
+  setColor(ev.target.value);
+  renderMeme();
+}
+
+function onSmallerFont() {
+  decreaseFont();
+  renderMeme();
+}
+function onBiggerFont() {
+  increaseFont();
+  renderMeme();
+}
+function onAddLine() {
+  if (gMeme.lines.length === 2) return;
+  addLine();
+  renderMeme();
+}
+function switchLine() {
+  setSelectedLine();
+}
+function onCanvasClick(ev) {
+  //   const lineX = gMeme.line.pos.x;
+  //   console.log(lineX);
+  const offsetX = ev.offsetX;
+  const offsetY = ev.offsetY;
+  console.log(offsetX, offsetY);
+  var lineSelected = gMeme.lines.find((line) =>
+    isClickInside(offsetX, offsetY, line.pos)
+  );
+
+  console.log(lineSelected);
+}
+function isClickInside(x, y, pos) {
+  return (
+    x >= pos.x &&
+    x <= pos.x + pos.width &&
+    y >= pos.y &&
+    y <= pos.y + pos.height
+  );
+}
+function onHamburger() {
+  document.querySelector(".burger-nav").classList.toggle("hidden");
+}
+
+function onAlignCenter() {
+  setAlignment("center");
+}
+function onAlignLeft() {
+  setAlignment("left");
+}
+function onAlignRight() {
+  setAlignment("right");
+}
+function onFlexClick() {
+  const randomId = getRandomInt(gImgs.length);
+
+  gMeme = getMem(gImgs[randomId].id);
+  setImg(gImgs[randomId].url);
+  document.querySelector(".gallery").classList.toggle("hidden");
+  document.querySelector(".generator").classList.toggle("hidden");
+  renderMeme();
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
 }
