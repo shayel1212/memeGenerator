@@ -1,4 +1,10 @@
 "use strict";
+var gElCanvas;
+var gCtx;
+var gFilter;
+
+gElCanvas = document.querySelector("canvas");
+gCtx = gElCanvas.getContext("2d");
 var gImgs = [
   { id: 1, url: "imgs/1.jpg", keywords: ["celebrity", "men", "funny"] },
   { id: 2, url: "imgs/2.jpg", keywords: ["animal", "dog"] },
@@ -19,6 +25,7 @@ var gImgs = [
   { id: 17, url: "imgs/17.jpg", keywords: ["men", "celebrity"] },
   { id: 18, url: "imgs/18.jpg", keywords: ["funny", "cartoon", "movie"] },
 ];
+
 var gAlignment = "center";
 var gMeme = {
   selectedImgId: 5,
@@ -34,7 +41,17 @@ var gMeme = {
 var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 };
 
 function getImgs() {
-  return gImgs;
+  if (gFilter) {
+    return gFilter;
+  } else {
+    return gImgs;
+  }
+}
+
+function filterMemes(val) {
+  gFilter = gImgs.filter((img) =>
+    img.keywords.find((word) => word.includes(val))
+  );
 }
 
 function getLinePos(idx, x, y, width, height) {
@@ -52,16 +69,32 @@ function getMem(id) {
     url: "",
     selectedImgId: id,
     selectedLineIdx: 0,
-    lines: [{ txt: "", size: 20, color: "red", pos: { x: 30, y: 10 } }],
+    lines: [
+      {
+        txt: "",
+        size: 20,
+        color: "white",
+        pos: { x: gElCanvas.width / 10, y: gElCanvas.height / 10 },
+      },
+    ],
   };
+}
+function removeLine() {
+  gMeme.lines.splice(gMeme.selectedLineIdx, 1);
 }
 
 function addLine() {
+  var y;
+  if (gMeme.lines.length === 0) {
+    y = gElCanvas.height / 10;
+  } else {
+    y = gElCanvas.height - 30;
+  }
   const newLine = {
     txt: "",
     size: 20,
-    color: "red",
-    pos: { x: 30, y: gElCanvas.height - 30 },
+    color: "white",
+    pos: { x: gElCanvas.width / 10, y },
   };
   gMeme.lines.push(newLine);
 }

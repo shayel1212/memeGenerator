@@ -314,7 +314,11 @@ canvas {
     margin-bottom: 0.5em;
   }
   .generator {
-    display: flex;
-    flex-direction: column-reverse;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  .canvas {
+    grid-row: 2;
+    height: 30vh;
   }
 }

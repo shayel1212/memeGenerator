@@ -18,19 +18,43 @@
       </button>
     </header>
     <div class="hidden burger-nav">
-      <a href="#" class="gallery-link">Gallery</a>
+      <a onclick="onGalleryClick()" href="#" class="gallery-link">Gallery</a>
       <a href="#" class="about-link">About</a>
     </div>
     <main class="gallery">
       <section class="gallery-inputs">
-        <input type="search" class="search-input" placeholder="Search meme.." />
+        <input
+          oninput="searchMemeInput(event)"
+          type="search"
+          class="search-input"
+          placeholder="Search meme.."
+        />
         <div class="images-links">
-          <button data-group="funny" class="group-btn">Funny</button>
-          <button data-group="animal" class="group-btn">Animal</button>
-          <button data-group="men" class="group-btn">Men</button>
-          <button data-group="women" class="group-btn">Women</button>
-          <button data-group="comic" class="group-btn">Comic</button>
-          <button data-group="smile" class="group-btn">Smile</button>
+          <button onclick="onFilter(this)" data-group="all" class="group-btn">
+            All
+          </button>
+          <button onclick="onFilter(this)" data-group="funny" class="group-btn">
+            Funny
+          </button>
+          <button
+            onclick="onFilter(this)"
+            data-group="animal"
+            class="group-btn"
+          >
+            Animal
+          </button>
+          <button onclick="onFilter(this)" data-group="men" class="group-btn">
+            Men
+          </button>
+          <button onclick="onFilter(this)" data-group="women" class="group-btn">
+            Women
+          </button>
+          <button onclick="onFilter(this)" data-group="comic" class="group-btn">
+            Comic
+          </button>
+          <button onclick="onFilter(this)" data-group="smile" class="group-btn">
+            Smile
+          </button>
         </div>
 
         <div>
@@ -59,7 +83,7 @@
           <button onclick="onAddLine()" class="add-btn">
             <i class="fa-solid fa-plus"></i>
           </button>
-          <button class="remove-btn">
+          <button onclick="onRemoveLine()" class="remove-btn">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
@@ -98,7 +122,7 @@
           />
         </div>
         <div class="share-btns">
-          <button class="share">
+          <button onclick="onUploadImg()" class="share">
             <i class="fa-solid fa-share-nodes"></i>
             Share
           </button>
