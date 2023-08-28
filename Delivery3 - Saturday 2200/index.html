@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">LOGO</div>
+      <div class="header-links">
+        <a href="#" class="gallery-link">Gallery</a>
+        <a href="#" class="about-link">About</a>
+      </div>
+      <button onclick="onHamburger()" class="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </header>
+    <div class="hidden burger-nav">
+      <a onclick="onGalleryClick()" href="#" class="gallery-link">Gallery</a>
+      <a href="#" class="about-link">About</a>
+    </div>
+    <main class="gallery">
+      <section class="gallery-inputs">
+        <input
+          oninput="searchMemeInput(event)"
+          type="search"
+          class="search-input"
+          placeholder="Search meme.."
+        />
+        <div class="images-links">
+          <button onclick="onFilter(this)" data-group="all" class="group-btn">
+            All
+          </button>
+          <button onclick="onFilter(this)" data-group="funny" class="group-btn">
+            Funny
+          </button>
+          <button
+            onclick="onFilter(this)"
+            data-group="animal"
+            class="group-btn"
+          >
+            Animal
+          </button>
+          <button onclick="onFilter(this)" data-group="men" class="group-btn">
+            Men
+          </button>
+          <button onclick="onFilter(this)" data-group="women" class="group-btn">
+            Women
+          </button>
+          <button onclick="onFilter(this)" data-group="comic" class="group-btn">
+            Comic
+          </button>
+          <button onclick="onFilter(this)" data-group="smile" class="group-btn">
+            Smile
+          </button>
+        </div>
+
+        <div>
+          <button class="more-btn">More</button>
+          <button onclick="onFlexClick()" class="more-btn">Im Flexible</button>
+        </div>
+      </section>
+
+      <section class="images"></section>
+    </main>
+    <main class="generator hidden">
+      <section class="canvas">
+        <canvas onclick="onCanvasClick(event)"></canvas>
+      </section>
+      <section class="canvas-remote">
+        <input
+          class="text"
+          type="text"
+          placeholder="text"
+          oninput="onTextInput(event)"
+        />
+        <div class="text-btns">
+          <button onclick="switchLine()" class="location-btn">
+            <i class="fa-solid fa-arrows-up-down"></i>
+          </button>
+          <button onclick="onAddLine()" class="add-btn">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <button onclick="onRemoveLine()" class="remove-btn">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+        <div class="font-btns">
+          <div class="group1">
+            <button
+              onclick="onSmallerFont()"
+              title="decrease font"
+              class="smaller-font"
+            >
+              <i class="fa-solid fa-a fa-xs"></i>
+            </button>
+            <button
+              onclick="onBiggerFont()"
+              title="increase font"
+              class="bigger-font"
+            >
+              <i class="fa-solid fa-a fa-xl"></i>
+            </button>
+            <button onclick="onAlignLeft()" class="align-left">
+              <i class="fa-solid fa-align-left"></i>
+            </button>
+            <button onclick="onAlignCenter()" class="align-center">
+              <i class="fa-solid fa-align-center"></i>
+            </button>
+            <button onclick="onAlignRight()" class="align-right">
+              <i class="fa-solid fa-align-right"></i>
+            </button>
+          </div>
+          <input
+            title="choose color"
+            style="cursor: pointer"
+            onchange="onColorInput(event)"
+            type="color"
+            class="color-picker"
+          />
+        </div>
+        <div class="share-btns">
+          <button onclick="onUploadImg()" class="share">
+            <i class="fa-solid fa-share-nodes"></i>
+            Share
+          </button>
+          <a
+            onclick="onDownload(this)"
+            class="download"
+            href="#"
+            download="my-img.jpg"
+          >
+            <i class="fa-solid fa-download"></i>
+            Download
+          </a>
+          <!-- <button class="download">
+            Download
+          </button> -->
+        </div>
+      </section>
+    </main>
+
+    <script
+      src="https://kit.fontawesome.com/7c1f7ac3f4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/service.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
